@@ -1,0 +1,56 @@
+<div class="row p-2">
+    <div class="input-group mb-3"   *ngIf="!isLoggedIn ; else welcomeTemplete "  >
+        <input 
+        type="text"
+        class="form-control"
+        placeholder="User Name"
+        [(ngModel)]="userName"
+        (input)="onInput()"
+        *ngIf="!isLoggedIn"/>
+        <!--
+            <input 
+        type="text"
+        class="form-control"
+        placeholder="User Name"
+        (input)="onInput()"
+        *ngIf="isLoggedIn"/>
+        -->
+        
+
+        <div class="input-group-append" >
+            <input type="button"
+                    value="login"
+                    [disabled]="!userName"
+                    class="button btn btn-primary" 
+              (click)="login()"
+
+            />
+        </div>   
+            
+    </div>
+<!--
+<div class="row p-2 md-4" *ngIf="isLoggedIn">
+        <span> Welcome {{userName}}</span>
+    </div>
+-->
+    
+</div>
+
+    
+<ng-template #welcomeTemplete>
+    <div class="row p-2 md-4">
+        <span> Welcome {{userName}}</span>
+    </div>
+    <div class="col md-4">
+        <div class="input-group-append">
+            <input type="button"
+                    class="button btn btn-outline-danger float-right" 
+                    value="Logout"
+                    (click)="logout()"
+            />
+        </div>
+
+    </div>
+</ng-template>
+
+

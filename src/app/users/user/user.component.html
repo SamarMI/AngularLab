@@ -1,0 +1,39 @@
+<!--<li class="list-group-item"
+*ngFor="let user of users ;
+ index as i;
+ odd as isOdd"
+ [class.odd]="isOdd"
+ > 
+-->
+<li class="list-group-item" (click)="sendMessage()"
+ 
+>
+<!--
+    [routerLink]="['/users']"
+[queryParams]="{age: user.age}"
+queryParamsHandling="merge"
+-->
+
+ <div *ngIf="user.age >18 || isLoggedIn ;else hiddenDataTemp">
+
+   <span [ngSwitch]="user.job">
+       <i *ngSwitchCase="'student'" class="fa fa-graduation-cap"> </i>
+       <i *ngSwitchCase="'doctor'" class="fa fa-uer-md"> </i>
+       <i *ngSwitchCase="'engineer'" class="fa fa-congs"> </i>
+       <i *ngSwitchCase="'developer'" class="fa fa-desktop"> </i>
+       <i *ngSwitchDefault class="fa fa-user"></i>
+   </span>
+        {{user.name}}
+</div>
+</li>
+
+<ng-template #hiddenDataTemp>
+    <div appHighlight>
+        <p >
+            Data Hidden
+        </p>
+
+
+    </div>
+
+</ng-template>
